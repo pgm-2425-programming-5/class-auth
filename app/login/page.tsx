@@ -30,6 +30,13 @@ const Login: React.FC = () => {
     }
   };
 
+  const handleLoginWithGitHub = async () => {
+    const res = await signIn("github", { redirect: false });
+    if (!res?.error) {
+      router.push("/dashboard");
+    }
+  }
+
   return (
     <div style={{ maxWidth: "400px", margin: "auto", padding: "2rem" }}>
       <h1>Login</h1>
@@ -61,7 +68,7 @@ const Login: React.FC = () => {
       </form>
       <hr style={{ margin: "2rem 0" }} />
       <button
-        onClick={() => signIn("github")}
+        onClick={handleLoginWithGitHub}
         style={{
           padding: "0.5rem 1rem",
           backgroundColor: "#333",
